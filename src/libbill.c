@@ -25,7 +25,7 @@ void libbill_set_debug() {
 
 void libbill_set_debug_output(const char *path) {
   message("libbill: setting debug output to: %s\n", path);
-  newhandle(debug_out, path, "w");
+  newhandle(debug_out, path, "a");
 }
 
 // For a given format string (printf-style) and argument list, print them out.
@@ -36,6 +36,7 @@ void message(const char *fmt, ...)
   va_list ap;
   va_start(ap, fmt);
   vfprintf(debug_out, fmt, ap);
+  va_end(ap)
 }
 
 // Clean up all the crud from the library.
